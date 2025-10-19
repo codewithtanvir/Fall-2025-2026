@@ -127,6 +127,13 @@ function renderDayTabs() {
 
         tabsContainer.appendChild(button);
     });
+
+    // After adding tabs, ensure the active tab is visible on small screens
+    const activeBtn = tabsContainer.querySelector('.day-tab.active');
+    if (activeBtn && activeBtn.scrollIntoView) {
+        // Use nearest block to avoid jumping the whole layout
+        activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
 }
 
 // Render sessions for the selected day
@@ -172,6 +179,18 @@ function init() {
     
     // Update time every second
     setInterval(updateDateTime, 1000);
+
+    // Add narrow-screen class for very small devices (helps CSS tweaks)
+    function updateNarrowClass() {
+        if (window.innerWidth <= 380) {
+            document.body.classList.add('narrow-screen');
+        } else {
+            document.body.classList.remove('narrow-screen');
+        }
+    }
+
+    updateNarrowClass();
+    window.addEventListener('resize', updateNarrowClass);
 }
 
 // Run when DOM is ready

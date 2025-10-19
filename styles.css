@@ -15,16 +15,25 @@ body {
 
 /* Date and Time Display */
 .datetime-container {
-    position: absolute;
+    position: fixed;
     top: 1rem;
     right: 1.5rem;
+    z-index: 100;
 }
 
 .current-datetime {
-    font-size: 0.875rem;
+    font-size: 0.813rem;
     color: #525252;
     text-align: right;
     line-height: 1.5;
+}
+
+/* Header layout wrapper for small screens */
+.app-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 /* Install Button */
@@ -69,13 +78,23 @@ body {
     font-weight: 600;
     color: #000000;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
 }
 
 /* Utility classes */
 .min-h-screen {
     min-height: 100vh;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* Respect device safe areas (notch/status bar) */
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .bg-white {
@@ -84,6 +103,9 @@ body {
 
 .max-w-2xl {
     max-width: 42rem;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .mx-auto {
@@ -97,8 +119,8 @@ body {
 }
 
 .py-16 {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .py-2 {
@@ -165,6 +187,22 @@ body {
 }
 
 /* Tab styles */
+.day-tabs-wrapper {
+    width: 100%;
+}
+
+#day-tabs {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+}
+
+/* hide scrollbar but keep scrollability */
+#day-tabs::-webkit-scrollbar { display: none; }
+#day-tabs { -ms-overflow-style: none; scrollbar-width: none; }
+
 .day-tab {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
@@ -175,6 +213,7 @@ body {
     border: none;
     cursor: pointer;
     color: #a3a3a3;
+    flex: 0 0 auto; /* prevent tabs from stretching */
 }
 
 .day-tab:hover {
@@ -198,8 +237,9 @@ body {
 .session-card {
     border-left: 2px solid #000000;
     padding-left: 1.5rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    width: 100%;
 }
 
 .session-header {
@@ -242,22 +282,76 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
+    .min-h-screen {
+        align-items: flex-start;
+        padding-top: 3rem;
+    }
+
     .px-6 {
         padding-left: 1rem;
         padding-right: 1rem;
     }
 
     .py-16 {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding-top: 1.5rem;
+        padding-bottom: 4rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .datetime-container {
+        top: 0.5rem;
+        right: 1rem;
+    }
+
+    .current-datetime {
+        font-size: 0.75rem;
     }
 
     .day-tab {
-        padding: 0.75rem 1rem;
+        padding: 0.75rem 0.875rem;
         font-size: 0.813rem;
     }
 
     .session-title {
         font-size: 1rem;
+    }
+
+    .mb-16 {
+        margin-bottom: 2rem;
+    }
+
+    .install-button {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+    }
+
+    /* On very small screens, place the install button near the header so it doesn't overlap content */
+    @media (max-width: 380px) {
+        .install-button {
+            bottom: auto;
+            top: 0.75rem;
+            right: 0.75rem;
+        }
+    }
+}
+
+/* Main content wrapper adjustment for even more vertical spacing */
+.max-w-2xl {
+    max-width: 42rem;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .max-w-2xl {
+        margin-top: 0;
     }
 }
