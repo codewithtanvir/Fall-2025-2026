@@ -17,6 +17,7 @@ const state = {
             id: '1',
             code: '01876',
             name: 'Digital Logic and Circuits',
+            section: 'K',
             sessions: [
                 { type: 'Theory', time: 'Sun 1:0 PM - 2:30 PM', room: 'DS0504' },
                 { type: 'Theory', time: 'Tue 1:0 PM - 2:30 PM', room: 'DS0504' },
@@ -26,6 +27,7 @@ const state = {
             id: '2',
             code: '01530',
             name: 'Web Technologies',
+            section: 'G',
             sessions: [
                 { type: 'Theory', time: 'Mon 3:0 PM - 5:0 PM', room: '9402' },
                 { type: 'Lab', time: 'Wed 3:0 PM - 5:20 PM', room: 'DS0104' },
@@ -35,6 +37,7 @@ const state = {
             id: '3',
             code: '00994',
             name: 'Compiler Design',
+            section: 'G',
             sessions: [
                 { type: 'Theory', time: 'Mon 12:40 PM - 2:40 PM', room: '9406' },
                 { type: 'Lab', time: 'Wed 12:40 PM - 3:0 PM', room: 'DS0203' },
@@ -44,6 +47,7 @@ const state = {
             id: '4',
             code: '00395',
             name: 'Chemistry',
+            section: 'G',
             sessions: [
                 { type: 'Theory', time: 'Tue 3:0 PM - 5:0 PM', room: '9212' },
                 { type: 'Lab', time: 'Sun 3:0 PM - 5:20 PM', room: 'DE0201' },
@@ -53,6 +57,7 @@ const state = {
             id: '5',
             code: '01703',
             name: 'Computational Statistics',
+            section: 'E',
             sessions: [
                 { type: 'Theory', time: 'Sun 9:40 - 11:10', room: 'DN0712' },
                 { type: 'Theory', time: 'Tue 9:40 - 11:10', room: 'DN0712' },
@@ -155,7 +160,7 @@ function renderSessions() {
             <div class="session-header">
                 <div class="session-info">
                     <div class="session-time">${session.time}</div>
-                    <h3 class="session-title">${course.name} <span class="session-badge ${session.type.toLowerCase()}">${session.type}</span></h3>
+                    <h3 class="session-title">${course.name}${course.section ? ` <span class="session-section">[${course.section}]</span>` : ''} <span class="session-badge ${session.type.toLowerCase()}">${session.type}</span></h3>
                 </div>
                 <span class="session-room">${session.room}</span>
             </div>
