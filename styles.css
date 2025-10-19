@@ -13,19 +13,21 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Date and Time Display */
+/* Date and Time Display (centered above title) */
 .datetime-container {
-    position: fixed;
-    top: 1rem;
-    right: 1.5rem;
-    z-index: 100;
+    /* Keep the date/time in normal flow so it sits above the title */
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.25rem;
+    z-index: 50;
 }
 
 .current-datetime {
-    font-size: 0.813rem;
+    font-size: 0.9rem;
     color: #525252;
-    text-align: right;
-    line-height: 1.5;
+    text-align: center;
+    line-height: 1.4;
 }
 
 /* Header layout wrapper for small screens */
@@ -33,7 +35,9 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center; /* center datetime and install button */
+    gap: 0.75rem;
+    padding: 0.25rem 0.5rem;
 }
 
 /* Install Button */
@@ -263,6 +267,39 @@ body {
     font-size: 1.125rem;
     font-weight: 500;
     color: #000000;
+}
+
+.session-badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.18rem 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 999px;
+    vertical-align: middle;
+    color: #ffffff;
+    background-color: #6b7280; /* neutral gray */
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.session-badge.lab {
+    background-color: #0ea5e9; /* blue for labs */
+    color: #01243a;
+}
+
+.session-badge.theory {
+    background-color: #10b981; /* green for theory */
+    color: #042814;
+}
+
+/* Slightly smaller badges on very small screens */
+@media (max-width: 380px) {
+    .session-badge {
+        font-size: 0.6rem;
+        padding: 0.12rem 0.45rem;
+    }
 }
 
 .session-room {

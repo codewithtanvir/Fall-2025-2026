@@ -155,7 +155,7 @@ function renderSessions() {
             <div class="session-header">
                 <div class="session-info">
                     <div class="session-time">${session.time}</div>
-                    <h3 class="session-title">${course.name}</h3>
+                    <h3 class="session-title">${course.name} <span class="session-badge ${session.type.toLowerCase()}">${session.type}</span></h3>
                 </div>
                 <span class="session-room">${session.room}</span>
             </div>
