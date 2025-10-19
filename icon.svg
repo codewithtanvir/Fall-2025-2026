@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <style>
+      .cls-1 { fill: #000000; }
+      .cls-2 { fill: #ffffff; }
+      .cls-3 { fill: none; stroke: #ffffff; stroke-width: 4; }
+    </style>
+  </defs>
+  <rect class="cls-1" width="192" height="192" rx="32"/>
+  <g transform="translate(96, 96)">
+    <!-- Calendar icon -->
+    <rect class="cls-2" x="-50" y="-40" width="100" height="80" rx="8"/>
+    <rect class="cls-1" x="-50" y="-40" width="100" height="20" rx="8"/>
+    <line class="cls-3" x1="-30" y1="-50" x2="-30" y2="-30"/>
+    <line class="cls-3" x1="30" y1="-50" x2="30" y2="-30"/>
+    <line class="cls-3" x1="-40" y1="-5" x2="40" y2="-5"/>
+    <circle class="cls-1" cx="-25" cy="15" r="6"/>
+    <circle class="cls-1" cx="0" cy="15" r="6"/>
+    <circle class="cls-1" cx="25" cy="15" r="6"/>
+  </g>
+</svg>

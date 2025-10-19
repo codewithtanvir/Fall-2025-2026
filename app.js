@@ -1,6 +1,17 @@
+// Get current day
+function getCurrentDay() {
+    const dayIndex = new Date().getDay();
+    const dayMap = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const currentDay = dayMap[dayIndex];
+    const DAYS = ['Sun', 'Mon', 'Tue', 'Wed'];
+    
+    // If current day is in DAYS array, use it; otherwise default to 'Mon'
+    return DAYS.includes(currentDay) ? currentDay : 'Mon';
+}
+
 // Application state
 const state = {
-    selectedDay: 'Mon',
+    selectedDay: getCurrentDay(),
     courses: [
         {
             id: '1',
@@ -51,6 +62,26 @@ const state = {
 };
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed'];
+
+// Update date and time display
+function updateDateTime() {
+    const now = new Date();
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    };
+    
+    const dateTimeString = now.toLocaleDateString('en-US', options);
+    const dateTimeElement = document.getElementById('current-datetime');
+    if (dateTimeElement) {
+        dateTimeElement.textContent = dateTimeString;
+    }
+}
 
 // Helper function to get sessions for a specific day
 function getSessionsForDay(day) {
@@ -135,8 +166,12 @@ function selectDay(day) {
 
 // Initialize the app
 function init() {
+    updateDateTime();
     renderDayTabs();
     renderSessions();
+    
+    // Update time every second
+    setInterval(updateDateTime, 1000);
 }
 
 // Run when DOM is ready

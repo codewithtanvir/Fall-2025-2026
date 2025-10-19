@@ -13,6 +13,56 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Date and Time Display */
+.datetime-container {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.current-datetime {
+    font-size: 0.875rem;
+    color: #525252;
+    text-align: right;
+    line-height: 1.5;
+}
+
+/* Install Button */
+.install-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.938rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.install-button:hover {
+    background-color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.install-button:active {
+    transform: translateY(0);
+}
+
+.install-button svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* Title styles */
 .page-title {
     font-size: 2rem;
@@ -25,6 +75,7 @@ body {
 /* Utility classes */
 .min-h-screen {
     min-height: 100vh;
+    position: relative;
 }
 
 .bg-white {
