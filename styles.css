@@ -246,6 +246,70 @@ body {
     width: 100%;
 }
 
+/* Flip card wrapper */
+.session-card {
+    perspective: 1000px; /* needed for 3D effect */
+}
+
+.session-card-inner {
+    position: relative;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(.4, .2, .2, 1);
+}
+.session-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.session-front, .session-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: absolute; /* keep both layers stacked to avoid layout jumps */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.session-back {
+    transform: rotateY(180deg);
+    background-color: #fbfbfb;
+    padding: 0.75rem 1rem;
+    border-left: 2px solid rgba(0,0,0,0.04);
+    border-radius: 4px;
+}
+
+.session-back-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.faculty-heading {
+    font-size: 0.85rem;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+}
+
+.faculty-name, .faculty-room, .faculty-email {
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+/* Hover flips on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .session-card:hover .session-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+/* Focus styles for keyboard users */
+.session-card:focus {
+    outline: 2px dashed rgba(0,0,0,0.12);
+    outline-offset: 4px;
+}
+
 .session-header {
     display: flex;
     align-items: flex-start;
